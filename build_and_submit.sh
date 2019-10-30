@@ -17,8 +17,7 @@ sbt assembly || { echo 'Build failed' ; exit 1; }
 
 echo -e "\n --- spark-submit --- \n"
 
-path_to_spark="$HOME/spark-2.3.4-bin-hadoop2.7"
 
-if [ -n "$2" ]; then path_to_spark=$2; fi
+if [ -n "$2" ]; then SPARK_HOME=$2; fi
 
-$path_to_spark/bin/spark-submit --conf spark.eventLog.enabled=true --conf spark.eventLog.dir="/tmp" --driver-memory 10g --class paristech.$1 target/scala-2.11/*.jar
+$SPARK_HOME/bin/spark-submit --conf spark.eventLog.enabled=true --conf spark.eventLog.dir="/tmp" --driver-memory 10g --class paristech.$1 target/scala-2.11/*.jar
