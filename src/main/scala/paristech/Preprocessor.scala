@@ -113,5 +113,6 @@ object Preprocessor {
       .withColumn("country2", regexp_replace($"country2", "false", "unknown"))
 
     df.write.parquet("data/kickstarter_data_clean")
+    println("The clean training set have been saved to data/kickstarter_data_clean")
   }
 }
